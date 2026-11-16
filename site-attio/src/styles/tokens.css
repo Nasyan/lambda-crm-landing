@@ -1,0 +1,76 @@
+/*
+ * Токены Lambda CRM. Система снята с attio.com (сетка, шкала, тени, кривые),
+ * палитра переведена в строгий монохром: цвет заменён на свет и контраст.
+ */
+
+:root {
+  /* Фоны */
+  --bg: #ffffff;
+  --bg-2: #fafafb;
+  --surface: #f3f4f6;
+  --ink-900: #101010; /* тёмные главы, closing, футер */
+  --ink-800: #1a1a1a; /* плитки интеграций */
+
+  /* Текст */
+  --fg: #1c1d1f;
+  --fg-2: #232529;
+  --fg-3: #6f7988; /* вторая половина заголовка, описания */
+  --fg-4: #a4adba; /* подписи, даты */
+  --fg-nav: #505967;
+  --on-dark: #fafafb;
+  --on-dark-2: #8f99a8;
+
+  /* Линии */
+  --hair: #e4e7ec;
+  --hair-weak: #edeff3;
+  --stroke: #d3d8df;
+  --stroke-strong: #cad0d9;
+  --hair-dark: rgba(255, 255, 255, 0.08);
+  --stroke-dark: #2e3238;
+
+  /* Акцент — чёрный вместо синего Attio */
+  --accent: #1c1d1f;
+  --accent-dark: #ffffff;
+  --chip-bg: #edeff3;
+  --chip-fg: #1c1d1f;
+  --chip-bg-dark: #1f2023;
+  --chip-fg-dark: #e4e7ec;
+
+  /* Кнопки */
+  --btn-bg: #202124;
+  --btn-border: #505967;
+  --btn-fg: #f3f4f6;
+  --btn-bg-hover: #383e47;
+
+  /* Шрифты */
+  --display: 'Inter Tight', Inter, 'Helvetica Neue', Arial, sans-serif;
+  --sans: Inter, 'Helvetica Neue', Arial, sans-serif;
+  --serif: 'Source Serif 4', 'Times New Roman', Georgia, serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Сетка */
+  --frame: 1392px;
+  --col: calc(var(--frame) / 24);
+  --header-h: 52px;
+
+  /* Радиусы */
+  --r-chip: 6px;
+  --r-btn: 10px;
+  --r-card: 12px;
+  --r-win: 16px;
+  --r-tile: 16px;
+
+  /* Тени */
+  --sh-1: 0 1px 2px rgba(11, 13, 24, 0.04);
+  --sh-win: 0 0 0 1px rgba(11, 13, 24, 0.06), 0 1px 2px rgba(11, 13, 24, 0.024),
+    0 3px 6px rgba(11, 13, 24, 0.03), 0 8px 14px rgba(11, 13, 24, 0.035),
+    0 16px 28px rgba(11, 13, 24, 0.04);
+
+  /* Кривые и длительности */
+  --ease-out: cubic-bezier(0, 0, 0, 1);
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out: cubic-bezier(0.2, 0, 0, 1);
+  --t-hover: 150ms;
+  --t-reveal: 600ms;
+  --t-nav: 320ms;
+}

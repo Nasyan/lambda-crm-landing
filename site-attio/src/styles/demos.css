@@ -1,0 +1,575 @@
+/* Макеты интерфейса Lambda CRM внутри лендинга. Монохром: статус читается
+   заливкой и обводкой, а не цветом. */
+
+.ui {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--fg);
+}
+.ui .mute {
+  color: #75777c;
+}
+.ui .dim {
+  color: #9fa1a7;
+}
+
+.win {
+  background: #fff;
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-win);
+  overflow: hidden;
+}
+
+.win__bar {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+}
+.win__bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e4e7ec;
+  display: inline-block;
+}
+
+/* ——— Статусы ——— */
+.st {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: var(--r-chip);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.st--solid {
+  background: var(--fg);
+  color: #fff;
+}
+.st--fill {
+  background: var(--hair-weak);
+  color: var(--fg);
+}
+.st--line {
+  border: 1px solid var(--stroke-strong);
+  color: var(--fg-nav);
+}
+.st--alert {
+  border: 1px solid var(--fg);
+  color: var(--fg);
+}
+.st--alert::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--fg);
+}
+.dark .st--fill {
+  background: #1f2023;
+  color: var(--on-dark);
+}
+
+/* ——— Таблица заказов ——— */
+.tbl__head,
+.tbl__row {
+  display: grid;
+  grid-template-columns: 60px 1.4fr 1.6fr 90px 132px 96px 70px;
+  align-items: center;
+  padding: 0 16px;
+  height: 38px;
+}
+.tbl__head {
+  height: 32px;
+  color: #75777c;
+  font-size: 12px;
+}
+.tbl__row {
+  border-top: 1px solid var(--hair-weak);
+  transition: background 400ms var(--ease-out);
+}
+.tbl__row--hot {
+  background: var(--surface);
+}
+.tbl__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--hair-weak);
+}
+.tbl__bar-l {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tbl__bar-r {
+  display: flex;
+  gap: 8px;
+}
+
+/* выпадающий список статуса */
+.drop {
+  position: absolute;
+  width: 176px;
+  padding: 6px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--sh-win);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 4;
+  transform-origin: top center;
+  animation: dropIn 200ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+.drop div {
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: #75777c;
+}
+.drop div.is-on {
+  background: var(--hair-weak);
+  color: var(--fg);
+}
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) rotateX(-8deg);
+  }
+}
+
+/* панель созданной задачи */
+.taskcard {
+  position: absolute;
+  right: 24px;
+  width: 300px;
+  padding: 14px;
+  background: #fff;
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-win);
+  z-index: 5;
+  animation: taskIn 420ms var(--ease-out);
+}
+@keyframes taskIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+.taskcard__rows {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 6px 12px;
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+/* ——— Карточка клиента ——— */
+.card3 {
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+}
+.card3 > * + * {
+  border-left: 1px solid var(--hair-weak);
+}
+.card3__side {
+  padding: 20px;
+}
+.card3__mid {
+  padding: 20px 24px;
+}
+.card3__rel {
+  padding: 20px;
+  background: var(--bg-2);
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--hair);
+  flex: 0 0 auto;
+}
+.kv {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 10px;
+  font-size: 12px;
+}
+.tl__row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--hair-weak);
+  opacity: 0;
+  transform: translateY(4px);
+}
+.tl__row.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+}
+.tl__row--auto {
+  background: var(--surface);
+  margin: 0 -8px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.relcard {
+  background: #fff;
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+.relcard--new {
+  border-color: var(--fg);
+}
+
+/* ——— Конструктор правил ——— */
+.flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  max-width: 604px;
+}
+.node {
+  width: 180px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  box-shadow: var(--sh-1);
+}
+.node--on {
+  border-color: var(--fg);
+}
+.node--ghost {
+  border-style: dashed;
+  border-color: var(--stroke);
+  background: var(--bg-2);
+  color: var(--fg-4);
+}
+.node--drop {
+  border-style: dashed;
+  border-color: var(--fg);
+  background: var(--surface);
+  animation: nodeIn 500ms var(--ease-out);
+}
+@keyframes nodeIn {
+  from {
+    opacity: 0;
+    transform: translate(24px, -8px);
+  }
+}
+.node__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.node__title {
+  font-weight: 600;
+  margin-top: 8px;
+}
+.arrow {
+  width: 28px;
+  height: 12px;
+  flex: 0 0 auto;
+}
+.palette {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 220px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  box-shadow: var(--sh-1);
+}
+.palette div {
+  padding: 6px 8px;
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.palette div.is-taken {
+  border-style: dashed;
+  color: var(--fg-4);
+}
+
+/* ——— Роли ——— */
+.roles {
+  display: grid;
+  grid-template-columns: 128px repeat(4, 1fr);
+  font-size: 12px;
+  text-align: center;
+}
+.roles > div {
+  padding: 10px 0;
+  border-top: 1px solid var(--hair-weak);
+}
+.roles > .roles__h {
+  border-top: 0;
+  color: #9fa1a7;
+  padding-bottom: 6px;
+}
+.roles__name {
+  text-align: left;
+}
+.roles__row--on {
+  background: var(--surface);
+}
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fg);
+}
+.dot--off {
+  background: transparent;
+  border: 1px solid var(--stroke);
+}
+.hidecol {
+  transition: opacity 500ms var(--ease-out);
+}
+.hidecol.is-hidden {
+  opacity: 0.14;
+}
+
+/* ——— Аналитика ——— */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  height: 116px;
+  margin-top: 16px;
+  padding: 0 6px;
+}
+.bars__col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+  height: 100%;
+  transform-origin: bottom;
+  transform: scaleY(0.02);
+  transition: transform 700ms var(--ease-out);
+}
+.bars__col.is-in {
+  transform: scaleY(1);
+}
+.bars__seg--a {
+  background: var(--fg);
+}
+.bars__seg--b {
+  background: #8f99a8;
+}
+.bars__seg--c {
+  background: var(--stroke);
+}
+.legend {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #9fa1a7;
+}
+.legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+.line-draw {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+}
+.line-draw.is-in {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1400ms var(--ease-out);
+}
+
+.ask {
+  align-self: flex-end;
+  background: var(--hair-weak);
+  border-radius: 10px;
+  padding: 8px 10px;
+  max-width: 260px;
+  font-size: 12px;
+}
+.answer {
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  padding: 12px;
+}
+.answer__num {
+  font-family: var(--display);
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ——— Тикер уведомлений ——— */
+.roller {
+  height: 168px;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 18%, #000 82%, transparent);
+}
+.roller__track {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: roll 18s linear infinite;
+}
+@keyframes roll {
+  to {
+    transform: translateY(-50%);
+  }
+}
+.notif {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
+}
+.notif i {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--hair);
+  flex: 0 0 auto;
+}
+
+/* ——— Гонка ——— */
+.race {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  font-size: 12px;
+}
+.race__col {
+  background: #fff;
+  border: 1px solid var(--hair);
+  border-radius: 10px;
+  padding: 12px;
+}
+.race__col--fast {
+  border-color: var(--fg);
+}
+.race__head {
+  display: flex;
+  justify-content: space-between;
+  color: #9fa1a7;
+}
+.race__list {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.race__list li {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  opacity: 0.35;
+  transition: opacity 300ms var(--ease-out);
+}
+.race__list li.is-done {
+  opacity: 1;
+}
+.race__list li::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--stroke);
+  flex: 0 0 auto;
+}
+.race__list li.is-done::before {
+  background: var(--fg);
+  border-color: var(--fg);
+}
+.race__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+@media (max-width: 1100px) {
+  .ui {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .card3 {
+    grid-template-columns: 1fr;
+  }
+  .card3 > * + * {
+    border-left: 0;
+    border-top: 1px solid var(--hair-weak);
+  }
+  .tbl__head,
+  .tbl__row {
+    grid-template-columns: 52px 1.1fr 1.3fr 132px;
+  }
+  .tbl__row {
+    height: auto;
+    min-height: 38px;
+    padding: 10px 16px;
+    align-items: start;
+    row-gap: 2px;
+  }
+  /* на узком экране остаются №, Клиент, Изделие и Статус */
+  .tbl__head > :nth-child(4),
+  .tbl__head > :nth-child(6),
+  .tbl__head > :nth-child(7),
+  .tbl__row > :nth-child(4),
+  .tbl__row > :nth-child(6),
+  .tbl__row > :nth-child(7) {
+    display: none;
+  }
+  .race {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  /* на телефоне карточка задачи и выпадающий список не перекрывают таблицу */
+  .taskcard {
+    position: static;
+    width: auto;
+    margin: 12px;
+    animation: none;
+  }
+  .drop {
+    display: none;
+  }
+  .roles {
+    grid-template-columns: 96px repeat(4, 1fr);
+    font-size: 11px;
+  }
+}

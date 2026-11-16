@@ -1,0 +1,587 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+svg,
+canvas,
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ——— Рамка страницы: вертикальные хейрлайны через все светлые секции ——— */
+.frame {
+  width: var(--frame);
+  margin: 0 auto;
+  padding: 0 24px;
+  border-left: 1px solid var(--hair);
+  border-right: 1px solid var(--hair);
+}
+.dark .frame {
+  border-color: var(--hair-dark);
+}
+
+.section {
+  border-top: 1px solid var(--hair);
+}
+.dark.section,
+.dark .section {
+  border-top-color: var(--hair-dark);
+}
+
+.dark {
+  background: var(--ink-900);
+  color: var(--on-dark);
+}
+
+/* ——— Типографика ——— */
+.h1 {
+  font-family: var(--display);
+  font-size: clamp(44px, 5vw, 72px);
+  line-height: 0.95;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.h2 {
+  font-family: var(--display);
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.h3 {
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 27.6px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.h-big {
+  font-family: var(--display);
+  font-size: clamp(56px, 6.6vw, 96px);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.024em;
+}
+
+/* Двухцветный заголовок — главный типографический приём */
+.g {
+  color: var(--fg-3);
+}
+.dark .g {
+  color: var(--on-dark-2);
+}
+.dark .h2,
+.dark .h3 {
+  color: var(--on-dark);
+}
+
+.lead {
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--fg-3);
+}
+.dark .lead {
+  color: var(--on-dark-2);
+}
+
+.cap {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--fg-4);
+}
+.dark .cap {
+  color: var(--on-dark-2);
+}
+
+.mono {
+  font-family: var(--mono);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Метки под замену — намеренно видимые */
+.flag {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  color: var(--fg-4);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/* ——— Пилюля-kicker ——— */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.dark .pill {
+  background: var(--chip-bg-dark);
+  color: var(--chip-fg-dark);
+}
+
+/* ——— Кнопки ——— */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: var(--r-btn);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  transition: background var(--t-hover) var(--ease-in-out),
+    border-color var(--t-hover) var(--ease-in-out), color var(--t-hover) var(--ease-in-out);
+}
+.btn--primary {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--btn-border);
+}
+.btn--primary:hover {
+  background: var(--btn-bg-hover);
+  color: #fff;
+}
+.btn--outline {
+  background: var(--bg);
+  color: #2e3238;
+  border: 1px solid var(--stroke-strong);
+}
+.btn--outline:hover {
+  border-color: var(--fg-3);
+}
+.btn--sm {
+  height: 32px;
+  padding: 0 8px 0 10px;
+  font-size: 12px;
+  line-height: 18px;
+}
+.dark .btn--outline {
+  background: var(--ink-900);
+  color: #edeff3;
+  border-color: var(--stroke-dark);
+}
+.dark .btn--outline:hover {
+  border-color: #505967;
+}
+.dark .btn--primary {
+  background: #fff;
+  color: var(--fg);
+  border-color: #fff;
+}
+.dark .btn--primary:hover {
+  background: #e4e7ec;
+}
+
+/* ——— Reveal: единственный вход контента ——— */
+.reveal {
+  opacity: 0;
+  filter: blur(2.5px);
+  transform: translateY(4px);
+}
+.reveal.is-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  transition: opacity var(--t-reveal) var(--ease-out),
+    filter var(--t-reveal) var(--ease-out), transform var(--t-reveal) var(--ease-out);
+}
+
+/* ——— Фактуры ——— */
+.stripes {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.78) 0 1px,
+    transparent 1px 8px
+  );
+}
+.stripes-dark {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.045) 0 1px,
+    transparent 1px 8px
+  );
+}
+.dots {
+  background-image: radial-gradient(var(--hair) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+.dots-dark {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+@media (max-width: 1440px) {
+  :root {
+    --frame: 100%;
+  }
+  .frame {
+    max-width: 1392px;
+  }
+}
+
+@media (max-width: 860px) {
+  .frame {
+    padding: 0 20px;
+    border-left: 0;
+    border-right: 0;
+  }
+  .h2 {
+    font-size: 30px;
+    line-height: 34px;
+  }
+  .h3 {
+    font-size: 21px;
+    line-height: 25px;
+  }
+  .lead {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* ═══ Движение: приёмы, снятые с docent и переведённые в монохром ═══ */
+
+/* Всё декоративное за экраном стоит на паузе — платить за невидимые кадры незачем */
+[data-paused] {
+  animation-play-state: paused !important;
+}
+
+/* Повторяющийся reveal: сильнее исходного (blur 7px и 14px вверх), играет
+   каждый раз, когда блок возвращается в кадр */
+.rise {
+  opacity: 0;
+  filter: blur(7px);
+  transform: translateY(14px);
+  transition: opacity 550ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 550ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 550ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.rise.is-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+/* Каретка, бегущая впереди слов */
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  border-radius: 1px;
+  background: var(--fg);
+  vertical-align: baseline;
+  transform: translateY(0.14em);
+  margin-left: 2px;
+  margin-right: -4px;
+  animation: caret-blink 1s steps(1) infinite;
+}
+.caret--light {
+  background: var(--on-dark);
+}
+.caret--block {
+  width: 6px;
+  height: 14px;
+  border-radius: 2px;
+  margin: 0 0 0 3px;
+  transform: translateY(2px);
+}
+
+/* Слово проявляется из размытия */
+.word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 550ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 550ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.word.is-in {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* Клавиша в строке «Нажмите [ / ]» */
+.keycap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  min-width: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: #f1f2f4;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--fg-nav);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 2px 4px -2px rgba(11, 13, 24, 0.3);
+  transition: box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+.keycap.is-pressed {
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.14);
+  transform: translateY(1px);
+}
+
+/* Дыхание, наклон под курсором и блик — карточка живёт в руках */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+.float {
+  animation: float-soft 6.5s ease-in-out infinite;
+}
+.tilt {
+  transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
+    translate3d(var(--tx, 0px), var(--ty, 0px), 0);
+  transition: transform 180ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+}
+.sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-win);
+  pointer-events: none;
+  z-index: 6;
+  opacity: var(--shine, 0);
+  transition: opacity 300ms ease;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 40%), rgba(255, 255, 255, 0.55), transparent 62%),
+    radial-gradient(420px circle at var(--mx, 50%) var(--my, 40%), rgba(28, 29, 31, 0.06), transparent 64%);
+  mix-blend-mode: soft-light;
+}
+
+/* Фон, который тихо живёт: сетка плывёт трансформом, диск вращается, пятно дышит */
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(44px, 44px, 0);
+  }
+}
+.drift {
+  animation: drift 26s linear infinite;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 64s linear infinite;
+}
+@keyframes bloom-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+.bloom {
+  animation: bloom-pulse 12s ease-in-out infinite;
+}
+
+/* Бегущие строки: два ряда в разные стороны */
+@keyframes marquee-l {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@keyframes marquee-r {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-l 46s linear infinite;
+}
+.marquee--r {
+  animation-name: marquee-r;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+/* Пульс живой точки */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+.live-dot {
+  animation: breathe 2400ms cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Линия, которая прорисовывается */
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  pathlength: 1;
+  animation: draw 700ms var(--ease-out) both;
+}
+
+/* Промах формы */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+.shake {
+  animation: shake 140ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .word {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+  .float,
+  .drift,
+  .spin-slow,
+  .bloom,
+  .marquee,
+  .live-dot,
+  .caret,
+  .draw {
+    animation: none;
+  }
+  .marquee {
+    width: auto;
+  }
+  .tilt {
+    transform: none;
+  }
+  .sheen {
+    opacity: 0 !important;
+  }
+}
